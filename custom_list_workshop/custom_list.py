@@ -159,3 +159,5 @@ class CustomList:
 
     def __setitem__(self, index, value):
         self.sequence[index] = value
+
+a = 5
