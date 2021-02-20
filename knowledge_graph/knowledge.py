@@ -1,4 +1,4 @@
-from knowledge_graph.suggestions import Suggestions
+from suggestions import Suggestions
 
 
 class KnowledgeGraph:
@@ -19,16 +19,16 @@ class KnowledgeGraph:
                 continue
             if suggestion.count(' vs ') > 1:
                 continue
-            first_term, second_term = suggestion.split(' vs ')
-            first_term.lower()
-            second_term.lower()
-            if second_term not in self.__nodes:
-                self.__nodes.append(second_term)
-                edge = (first_term, second_term)
-                reversed_edge = (second_term, first_term)
-                if edge not in self.__edges and reversed_edge not in self.__edges:
+            a, b = suggestion.split(' vs ')
+            a = a.lower()
+            b = b.lower()
+            if b not in self.__nodes:
+                self.__nodes.append(b)
+                edge = (a, b)
+                reverse_edge = (b, a)
+                if edge not in self.__edges and reverse_edge not in self.__edges:
                     self.__edges.append(edge)
-                self.__build_graph(second_term, depth=depth + 1)
+                self.__build_graph(b, depth=depth+1)
 
     @property
     def nodes(self):
@@ -40,5 +40,6 @@ class KnowledgeGraph:
 
 
 if __name__ == '__main__':
-    graph = KnowledgeGraph('Python')
+    graph = KnowledgeGraph('python')
+    print(graph.nodes)
     print(graph.edges)

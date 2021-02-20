@@ -1,6 +1,5 @@
 import unittest
-
-from knowledge_graph.suggestions import Suggestions
+from suggestions import Suggestions
 
 
 class SuggestionTest(unittest.TestCase):
